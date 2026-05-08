@@ -9,6 +9,6 @@ admin.site.register(Produto)
 class FabricanteAdmin(admin.ModelAdmin):
     # Cria um filtro de hierarquia com datas
     date_hierarchy = 'criado_em'
-    admin.site.register(Fabricante,FabricanteAdmin)
-    admin.site.register(Categoria)
-    admin.site.register(Produto)
+admin.site.register(Fabricante,FabricanteAdmin)
+admin.site.register(Categoria)
+admin.site.register(Produto)
