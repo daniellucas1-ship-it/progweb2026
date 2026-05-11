@@ -13,18 +13,12 @@ def list_produto_view(request, id=None):
     if promocao is not None:
         produtos = produtos.filter(promocao=promocao)
     if destaque is not None:
-        produtos = produtos.filter(destaque=destaque)    
-    print(produtos)
-    if destaque is not None:
-        print(destaque)
-    if produto is not None:
-        print(produto)
-    if promocao is not None:
-        print(promocao)
+        produtos = produtos.filter(destaque=destaque)
     if categoria is not None:
-        print(categoria)
+        produtos = produtos.filter(categoria=categoria)
     if fabricante is not None:
-        print(fabricante)
-    if id is None:
-        id = 0
+        produtos = produtos.filter(fabricante=fabricante)
+    if id is not None:
+        produtos = produtos.filter(id=id)
+    print(produtos)
     return  HttpResponse('<h1>Produto de id %s!</h1>' % id)
