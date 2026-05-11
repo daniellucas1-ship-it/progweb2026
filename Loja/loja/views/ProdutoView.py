@@ -15,9 +15,9 @@ def list_produto_view(request, id=None):
     if destaque is not None:
         produtos = produtos.filter(destaque=destaque)
     if categoria is not None:
-        produtos = produtos.filter(categoria=categoria)
+        produtos = produtos.filter(categoria__Categoria=categoria)
     if fabricante is not None:
-        produtos = produtos.filter(fabricante=fabricante)
+        produtos = produtos.filter(fabricante__Fabricante=fabricante)
     if id is not None:
         produtos = produtos.filter(id=id)
     print(produtos)
