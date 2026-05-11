@@ -10,6 +10,5 @@ def list_produto_view(request, id=None):
     produtos = Produto.objects.first()
     print(produtos)
     if id is None:
-
-        return HttpResponse('<h1>nenhum id foi informado</h1>')
-return  HttpResponse('<h1>Produto de id %s!</h1>' % id)
+        id = 0
+    return  HttpResponse('<h1>Produto de id %s!</h1>' % id)
