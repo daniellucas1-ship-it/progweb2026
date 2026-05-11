@@ -6,7 +6,7 @@ def list_produto_view(request, id=None):
     promocao = request.GET.get("promocao")
     categoria = request.GET.get("categoria")
     fabricante = request.GET.get("fabricante")
-    produtos = Produto.objects.first()
+    produtos = Produto.objects.filter(Produto=produto)
     print(produtos)
     if destaque is not None:
         print(destaque)
