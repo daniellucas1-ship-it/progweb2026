@@ -7,7 +7,7 @@ def list_produto_view(request, id=None):
     categoria = request.GET.get("categoria")
     fabricante = request.GET.get("fabricante")
     #acima do if
-    produtos = Produto.objects.all()
+    produtos = Produto.objects.first()
     print(produtos)
     if id is None:
 
