@@ -8,6 +8,7 @@ def list_produto_view(request, id=None):
     promocao = request.GET.get("promocao")
     categoria = request.GET.get("categoria")
     fabricante = request.GET.get("fabricante")
+    dias = request.GET.get("dias")
    # produtos = Produto.objects.filter(Produto=produto)
     produtos = Produto.objects.all()
     if dias is not None:
