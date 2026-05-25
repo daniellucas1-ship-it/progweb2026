@@ -28,7 +28,3 @@ def list_produto_view(request, id=None):
     context = {'produtos': produtos}
     return render(request, template_name='produto/produto.html', context=context, status=200)
     
-    if id is not None:
-        produtos = produtos.filter(id=id)
-    print(produtos)
-    return  HttpResponse('<h1>Produto de id %s!</h1>' % id)
