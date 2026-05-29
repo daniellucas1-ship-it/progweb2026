@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect # Retire from django.http import HttpResponse
-from loja.models import Produto
+from loja.models import Produto, Fabricante, Categoria
 from datetime import timedelta, datetime
 from django.utils import timezone
 # inclua as bibliotecas FileSystemStorage
@@ -72,7 +72,10 @@ def edit_produto_view(request, id=None):
         produtos = produtos.filter(id=id)
         produto = produtos.first()
         print(produto)
-        context = { 'produto': produto }
+        #adicione a lista de fabricantes e categorias no context
+        Fabricantes = Fabricante.objects.all()
+        Categorias = Categoria.objects.all()
+        context = { 'produto': produto, 'fabricantes' : Fabricantes, 'categorias' : Categorias}
         return render(request, template_name='produto/produto-edit.html', context=context, status=200)
 def list_produto_view(request, id=None):
     produto = request.GET.get("produto")
