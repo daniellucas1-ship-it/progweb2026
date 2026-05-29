@@ -7,10 +7,10 @@
 {% block content %}
 <div id="content">
     <div class="container">
-        <form method="POST" action= "/produto/edit" >
+        <form method="POST" enctype="multipart/form-data" action= "/produto/create" ></form>
             {% csrf_token %}
             <div class="row">
-                <input type="hidden" value="{{produto.id}}" name="id">
+                <!--<input type="hidden" value="{{produto.id}}" name="id">-->
                 <h5 for="Produto" class="col-md-2">Produto</h5>
                 <input value="{{produto.Produto}}" name="Produto">
             </div>
@@ -26,17 +26,21 @@
             </div>
             <div class="row">
                 <div class="col-md-2">
-                    {% if produto.promocao %}
-                    <input type="checkbox" checked name="promocao" >
-                    {% else %}
-                    <input type="checkbox" name="promocao" >
-                    {% endif %}
+                    <input type="checkbox" name="destaque" >
                     <label for="promocao">Promoção</label>
                 </div>
             </div>
             <div class="row">
                 <label for="msgPromocao" class="col-md-2">Msg Promoção</label>
                 <input value="{{produto.msgPromocao}}" name="msgPromocao">
+            </div>
+            <div class="row mt-2">
+                <label for="preco" class="col-md-2">Preço</label>
+                <input name="preco">
+            </div>
+            <div class="row mt-2">
+                <label for="image" class="col-md-2">Imagem</label>
+                <input type="file" name="image">
             </div>
             <div class="row">
                 <button type="submit" class="btn btn-danger col-md-2 mt-3 mr-2"><i class="fa fa-check"></i> Salvar</button>
