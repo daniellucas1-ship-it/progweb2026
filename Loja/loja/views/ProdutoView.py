@@ -2,6 +2,10 @@ from django.shortcuts import render, redirect # Retire from django.http import H
 from loja.models import Produto
 from datetime import timedelta, datetime
 from django.utils import timezone
+# adicione a função que chama a interface de criar produto
+# no final do arquivo
+def create_produto_view(request, id=None):
+    return render(request, template_name='produto/produto-create.html',status=200)
 def delete_produto_view(request, id=None):
     # Processa o evento GET gerado pela action
     produtos = Produto.objects.all()
