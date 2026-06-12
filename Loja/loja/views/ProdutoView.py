@@ -5,6 +5,7 @@ from django.utils import timezone
 # inclua as bibliotecas FileSystemStorage
 from django.core.files.storage import FileSystemStorage
 def create_produto_view(request, id=None):
+    print("create produto")
     # Processa o post back gerado pela action
     if request.method == 'POST':
         produto = request.POST.get("Produto")
