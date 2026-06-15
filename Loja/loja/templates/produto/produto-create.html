@@ -30,7 +30,15 @@
                 <label for="msgPromocao" class="col-md-2">Msg Promoção</label>
                 <input name="msgPromocao">
             </div>
-             <div class="row">
+            <div class="row mt-2">
+                <label for="preco" class="col-md-2">Preço</label>
+                <input name="preco">
+            </div>
+            <div class="row mt-2">
+                <label for="image" class="col-md-2">Imagem</label>
+                <input type="file" name="image">
+            </div>
+            <div class="row">
                 <label for="CategoriaFk" class="col-md-2" >Categorias</label>
                 <select name="CategoriaFk">
                     <option value="-1">-----</option>
@@ -55,14 +63,6 @@
                         {% endif %}
                     {% endfor %}
                 </select>
-            </div>
-            <div class="row mt-2">
-                <label for="preco" class="col-md-2">Preço</label>
-                <input name="preco">
-            </div>
-            <div class="row mt-2">
-                <label for="image" class="col-md-2">Imagem</label>
-                <input type="file" name="image">
             </div>
             <div class="row">
                 <button type="submit" class="btn btn-danger col-md-2 mt-3 mr-2"><i class="fa fa-check"></i> Inserir</button>
