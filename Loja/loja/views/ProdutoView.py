@@ -51,7 +51,7 @@ def create_produto_view(request, id=None):
         except Exception as e:
                 print("Erro inserindo produto: %s" % e)
         return redirect("/produto")
-    return render(request, template_name='produto/produto-create.html',status=200)
+    return render(request, template_name='produto/produto-create.html',context=context, status=200)
 def delete_produto_view(request, id=None):
     # Processa o evento GET gerado pela action
     produtos = Produto.objects.all()
