@@ -21,6 +21,9 @@ def create_produto_view(request, id=None):
         print(msgPromocao)
         print(preco)
         print(image)
+        Fabricantes = Fabricante.objects.all()
+        Categorias = Categoria.objects.all()
+        context = { 'produto': produto, 'fabricantes' : Fabricantes, 'categorias' : Categorias}
         try:
             obj_produto = Produto()
             obj_produto.Produto = produto
@@ -104,9 +107,8 @@ def list_produto_view(request, id=None):
         now = timezone.now()
         now = now - timedelta(days = int(dias))
         produtos = produtos.filter(criado_em__gte=now)
-        Categorias = Categoria.objects.all()
-        context = { 'produto': produto, 'fabricantes' : Fabricantes, 'categorias' : Categorias}
-        return render(request, template_name='produto/produto.html', context=context, status=200)
+    context = {'produtos': produtos}
+    return render(request, template_name='produto/produto.html', context=context, status=200)
     
     if id is not None:
         produtos = produtos.filter(id=id)
@@ -143,6 +145,9 @@ def edit_produto_postback(request, id=None):
             print("Produto %s salvo com sucesso" % produto)
         except Exception as e:
             print("Erro salvando edição de produto: %s" % e)
+    Fabricantes = Fabricante.objects.all()
+    Categorias = Categoria.objects.all()
+    context = { 'produto': produto, 'fabricantes' : Fabricantes, 'categorias' : Categorias}        
     return redirect("/produto")
 # adicione a função que trata o postback da interface de exclusão
 def delete_produto_postback(request, id=None):
