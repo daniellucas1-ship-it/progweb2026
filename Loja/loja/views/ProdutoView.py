@@ -7,6 +7,9 @@ from django.core.files.storage import FileSystemStorage
 def create_produto_view(request, id=None):
     print("create produto")
     # Processa o post back gerado pela action
+    Fabricantes = Fabricante.objects.all()
+    Categorias = Categoria.objects.all()
+    context = {'fabricantes' : Fabricantes, 'categorias' : Categorias}
     if request.method == 'POST':
         produto = request.POST.get("Produto")
         destaque = request.POST.get("destaque")
@@ -21,9 +24,6 @@ def create_produto_view(request, id=None):
         print(msgPromocao)
         print(preco)
         print(image)
-        Fabricantes = Fabricante.objects.all()
-        Categorias = Categoria.objects.all()
-        context = { 'produto': produto, 'fabricantes' : Fabricantes, 'categorias' : Categorias}
         try:
             obj_produto = Produto()
             obj_produto.Produto = produto
