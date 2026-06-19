@@ -56,7 +56,7 @@ def delete_produto_view(request, id=None):
     # Processa o evento GET gerado pela action
     Fabricantes = Fabricante.objects.all()
     Categorias = Categoria.objects.all()
-    context = { 'produto': produto, 'fabricantes' : Fabricantes, 'categorias' : Categorias}
+    context = {'fabricantes' : Fabricantes, 'categorias' : Categorias}
     produtos = Produto.objects.all()
     if id is not None:
         produtos = produtos.filter(id=id)
