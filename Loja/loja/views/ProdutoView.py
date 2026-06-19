@@ -156,12 +156,13 @@ def delete_produto_postback(request, id=None):
     if request.method == 'POST':
     # Salva dados editados
         id = request.POST.get("id")
-        produto = request.POST.get("Produto")
-        print("postback-delete")
-        print(id)   
+        
         try:
-            Produto.objects.filter(id=id).delete()
-            print("Produto %s excluido com sucesso" % produto)
+            Produto.objects.filter(id=id)
+
+            if produto.image: 
+                print("Imagem %s excluida com sucesso" % imagem)
+                Produto.image.delete(save=True)
         except Exception as e:
-            print("Erro salvando edição de produto: %s" % e)
+            print("Erro salvando edição de arquivo de imagem: %s" % e)
     return redirect("/produto")
