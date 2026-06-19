@@ -56,7 +56,8 @@ def delete_produto_view(request, id=None):
         produtos = produtos.filter(id=id)
     produto = produtos.first()
     print(produto)
-    context = {'produto': produto}
+    Categorias = Categoria.objects.all()
+    context = { 'produto': produto, 'fabricantes' : Fabricantes, 'categorias' : Categorias}
     return render(request, template_name='produto/produto-delete.html', context=context, status=200)
 def details_produto_view(request, id=None):
 # Processa o evento GET gerado pela action
@@ -103,8 +104,9 @@ def list_produto_view(request, id=None):
         now = timezone.now()
         now = now - timedelta(days = int(dias))
         produtos = produtos.filter(criado_em__gte=now)
-    context = {'produtos': produtos}
-    return render(request, template_name='produto/produto.html', context=context, status=200)
+        Categorias = Categoria.objects.all()
+        context = { 'produto': produto, 'fabricantes' : Fabricantes, 'categorias' : Categorias}
+        return render(request, template_name='produto/produto.html', context=context, status=200)
     
     if id is not None:
         produtos = produtos.filter(id=id)
